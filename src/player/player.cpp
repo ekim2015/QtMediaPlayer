@@ -1,23 +1,11 @@
-#include "player.h"
+#include "mainwindow.h"
 
-// constructor
-MediaPlayer::MediaPlayer()
+#include <QApplication>
+
+int main(int argc, char *argv[])
 {
-}
-
-// protected destructor
-MediaPlayer::~MediaPlayer()
-{
-}
-
-// must factor in arguments
-int MediaPlayer::main(int argc, char *argv[])
-{
-    QApplication app(argc, argv);
-
-    // no parent widget necessary (this is top-level window)
-    QWidget window;
-    window.show();
-
-    return app.exec()
+    QApplication a(argc, argv);
+    MainWindow w;
+    w.show();
+    return a.exec();
 }
