@@ -9,5 +9,6 @@
 
 ## Future updates
 * Ability to download music straight from YouTube/Soundcloud and other online free music services
+* Data saving
 * Functional unit testing (with Catch/CTest/QTest)
 * Docker containerization (for dependencies like CMake, g++, gcc, and more)
