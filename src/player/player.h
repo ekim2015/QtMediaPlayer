@@ -1,22 +1,21 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include <Qt>
-#include <QtWidgets>
+#include "qtDependencies.h"
 
-// import standard library functions
-#include <stdio.h>
-
-class MediaPlayer
+// serves as the central widget
+class Player : public QWidget
 {
-private:
-    // constructor
-    int main();
+    Q_OBJECT
 
-protected:
 public:
-    MediaPlayer();
-    virtual ~MediaPlayer();
-}
+    Player(QWidget *parent = nullptr);
+    void readFiles(const QStringList &files);
 
-#endif
+private slots:
+
+private:
+    // to-do: create instance of QMediaPlayer
+};
+
+#endif // PLAYER_H

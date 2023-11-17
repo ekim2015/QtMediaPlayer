@@ -7,5 +7,12 @@
 #include <QMessageBox>
 #include <QString>
 #include <QCoreApplication>
+#include <QAbstractTableModel>
+#include <QList>
+#include <QFileDialog>
+#include <QFile>
+#include <QStringList>
+#include <QMediaPlayer>
+#include <QAudioOutput>
 
 #endif // QTDEPENDENCIES_H

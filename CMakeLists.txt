@@ -9,11 +9,8 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
+find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets Multimedia)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
-
-add_subdirectory(src/player)
-
 set(PROJECT_SOURCES
         main.cpp
         mainwindow.cpp
@@ -25,7 +22,12 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(MediaPlayer
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
-        aboutPopup.h
+        qtDependencies.h
+        dataModel.cpp
+        dataModel.h
+        player.cpp
+        player.h
+
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET MediaPlayer APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
@@ -46,6 +48,7 @@ else()
 endif()
 
 target_link_libraries(MediaPlayer PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(MediaPlayer PRIVATE Qt6::Multimedia)
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an

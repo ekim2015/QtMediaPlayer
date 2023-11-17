@@ -7,9 +7,9 @@ void MainWindow::createMenus()
     QMenu *viewMenu = mainMenu->addMenu(tr("&View"));
     QMenu *aboutMenu = mainMenu->addMenu(tr("&About"));
 
-    QAction *openFile = new QAction(tr("&New"), this);
+    QAction *openFile = new QAction(tr("&Open"), this);
     fileMenu->addAction(openFile);
-    //    connect(openFile, &QAction::triggered, this, )
+    connect(openFile, &QAction::triggered, this, &MainWindow::openFile);
 
     mainMenu->addSeparator();
 
@@ -26,7 +26,7 @@ void MainWindow::createMenus()
 };
 
 MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
+    : QMainWindow(parent), player(new Player)
 {
     setWindowTitle(tr("Media Player"));
     createMenus();
@@ -35,6 +35,19 @@ MainWindow::MainWindow(QWidget *parent)
 void MainWindow::quitApp()
 {
     QCoreApplication::quit();
+}
+
+void MainWindow::openFile()
+{
+    QFileDialog dialog(this);
+    // singular file
+    dialog.setFileMode(QFileDialog::ExistingFiles);
+    dialog.setNameFilter("Audio files (*.wav *.mp3 *.aac *.flac");
+    if (dialog.exec())
+    {
+        const QStringList pathList = dialog.selectedFiles();
+        player->readFiles(pathList);
+    }
 }
 
 int MainWindow::showAboutMsg()

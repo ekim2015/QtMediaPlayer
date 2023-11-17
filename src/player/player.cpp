@@ -1,11 +1,27 @@
-#include "mainwindow.h"
+#include "player.h"
 
-#include <QApplication>
-
-int main(int argc, char *argv[])
+Player::Player(QWidget *parent) : QWidget(parent)
 {
-    QApplication a(argc, argv);
-    MainWindow w;
-    w.show();
-    return a.exec();
+}
+
+// function to read file from absolute path
+void Player::readFiles(const QStringList &files)
+{
+    if (!files.isEmpty())
+    {
+        for (const auto &f : files)
+        {
+            // instantiate QFile
+            QFile currFile(f);
+
+            if (!currFile.open(QIODevice::ReadOnly))
+            {
+                continue;
+            }
+
+            // otherwise, call function
+        }
+    }
+
+    // for each absolute path in list
 }
