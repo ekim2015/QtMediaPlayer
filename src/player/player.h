@@ -2,6 +2,8 @@
 #define PLAYER_H
 
 #include "qtDependencies.h"
+#include "dataModel.h"
+#include <QBoxLayout>
 
 // serves as the central widget
 class Player : public QWidget
@@ -10,6 +12,7 @@ class Player : public QWidget
 
 public:
     Player(QWidget *parent = nullptr);
+    QSettings *settings;
     void readFiles(const QStringList &files);
 
 private slots:

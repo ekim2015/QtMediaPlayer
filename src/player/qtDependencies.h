@@ -12,7 +12,11 @@
 #include <QFileDialog>
 #include <QFile>
 #include <QStringList>
-#include <QMediaPlayer>
-#include <QAudioOutput>
+#include <QSettings>
+#include <QDateTime>
+#include <QStandardPaths>
+#include <QVariant>
+// #include <QMediaPlayer>
+// #include <QAudioOutput>
 
 #endif // QTDEPENDENCIES_H

@@ -2,9 +2,16 @@
 
 Player::Player(QWidget *parent) : QWidget(parent)
 {
+    // create layout for files
+    auto layout = new QVBoxLayout;
+    auto table = new DataModel;
+    // create table view
+    this->setLayout(layout);
+
+    //    layout->addWidget();
 }
 
-// function to read file from absolute path
+// function to read files from absolute path
 void Player::readFiles(const QStringList &files)
 {
     if (!files.isEmpty())

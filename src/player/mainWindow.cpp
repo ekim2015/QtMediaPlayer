@@ -23,12 +23,21 @@ void MainWindow::createMenus()
     aboutMenu->addAction(information);
     // connect About to show version + author
     connect(information, &QAction::triggered, this, &MainWindow::showAboutMsg);
+
+    // set checkable parameters under view
+    // view will specify grid or table view
+    QAction *gridView = new QAction(tr("&Grid"), this);
+    viewMenu->addAction(gridView);
+
+    QAction *tableView = new QAction(tr("&Table"), this);
+    viewMenu->addAction(tableView);
 };
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), player(new Player)
 {
     setWindowTitle(tr("Media Player"));
+    setCentralWidget(player);
     createMenus();
 }
 
@@ -47,6 +56,7 @@ void MainWindow::openFile()
     {
         const QStringList pathList = dialog.selectedFiles();
         player->readFiles(pathList);
+        //        table->insertFileData(pathList);
     }
 }
 
