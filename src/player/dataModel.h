@@ -7,6 +7,7 @@
 #include <QTableView>
 #include <QWidget>
 #include <QVariant>
+#include <QMenu>
 
 // struct to populate music items
 struct MusicData
@@ -31,7 +32,11 @@ protected:
 private:
     int getSongNum(const QModelIndex &parent, QSortFilterProxyModel *proxy) const;
     int getColumns(const QModelIndex &parent, QSortFilterProxyModel *proxy) const;
-    void createContextMenu(const QPoint &point);
+    // QVariant is used to union different data types
+    QVariant addHeader(int role, int section);
+
+private slots:
+    void createContextMenu(QPoint &point);
 };
 
 #endif // DATAMODEL_H
