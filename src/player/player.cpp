@@ -1,23 +1,34 @@
 #include "player.h"
 
-// constructor
-MediaPlayer::MediaPlayer()
+Player::Player(QWidget *parent) : QWidget(parent)
 {
+    // create layout for files
+    auto layout = new QVBoxLayout;
+    auto table = new DataModel;
+    // create table view
+    this->setLayout(layout);
+
+    //    layout->addWidget();
 }
 
-// protected destructor
-MediaPlayer::~MediaPlayer()
+// function to read files from absolute path
+void Player::readFiles(const QStringList &files)
 {
-}
+    if (!files.isEmpty())
+    {
+        for (const auto &f : files)
+        {
+            // instantiate QFile
+            QFile currFile(f);
 
-// must factor in arguments
-int MediaPlayer::main(int argc, char *argv[])
-{
-    QApplication app(argc, argv);
+            if (!currFile.open(QIODevice::ReadOnly))
+            {
+                continue;
+            }
 
-    // no parent widget necessary (this is top-level window)
-    QWidget window;
-    window.show();
+            // otherwise, call function
+        }
+    }
 
-    return app.exec()
+    // for each absolute path in list
 }
